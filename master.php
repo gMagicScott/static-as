@@ -2,7 +2,7 @@
 /**
  * Master PHP file
  *
- * The settings section starts at line # 19
+ * The settings section starts at line # 21
  *
  */
 
@@ -14,6 +14,8 @@
 	die();	// If not, we stop here
 }
 /* Your server's PHP is good, lets continue on... */
+// Define a referance to this file
+define('MASTERBASEDIR', dirname(__FILE__) . '/')
 
 /**
  * Let's work on some of the settings that will make this work for you
@@ -22,7 +24,8 @@
 $domain = array(
 			1	=>	'http://example.com/',	// put your primary website domain here between the ' marks. Keep the / at the end
 			2	=>	'http://www.guilefulmagic.com/',	// your secondary website, same rules as primary, delete this line if you don't need it
-			3	=>	'', // you can keep going as long as you need, the next would be 4 => '',
+			3	=>	MASTERBASEDIR, // you can try this if you get 'http:// wrapper is disabled in the server configuration by allow_url_fopen=0' errors
+			4	=>	'',	// you can keep going as long as you need, the next would be 4 => '',
 		);
 $mergecode = array(
 	//		'this-is in the url'	=>	'this is the merge code in the html';
@@ -69,7 +72,9 @@ define('SET_TODAY', true);
  * Feel free to read and learn though
  */
 
- 
+// Try to set url fopen value to true. It it was off, it's worth a shot.
+ini_set('allow_url_fopen', 1);
+
 if (isset($_GET['l']) and is_numeric($_GET['l'])) {		// 'l' is required make sure it's there
 	$l = intval( $_GET['l'] );
 	unset($_GET['l']);
