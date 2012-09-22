@@ -15,7 +15,7 @@
 }
 /* Your server's PHP is good, lets continue on... */
 // Define a referance to this file
-define('MASTERBASEDIR', dirname(__FILE__) . '/')
+define('MASTERBASEDIR', dirname(__FILE__) . '/');
 
 /**
  * Let's work on some of the settings that will make this work for you
