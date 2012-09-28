@@ -29,7 +29,7 @@ $domain = array(
 		);
 $mergecode = array(
 	//		'this-is in the url'	=>	'this is the merge code in the html';
-			'Name'		=>	'%name%',			// name should be clients full name. This PHP will create %firstname% and %lastname% for you.
+			"Name"		=>	'%name%',			// name should be clients full name. This PHP will create %firstname% and %lastname% for you.
 			'Email1'	=>	'%email%',
 			'Company'	=>	'%company%',
 			'Homephone'	=>	'%homephone%',
@@ -167,8 +167,8 @@ if ( SET_TODAY === true ) { // will substitute %today% and %today+x% into templa
 };
 
 if ( SPLIT_NAME === true ) {	// splitting the 'name' into first and last based on first [space] character in full name
-	if ( isset ( $_GET['name'] ) ) {
-		$splitname = explode(" ", $_GET['name'], 2);
+	if ( isset ( $_REQUEST['Name'] ) ) {
+		$splitname = explode(" ", $_REQUEST['Name'], 2);
 		$showpage=str_replace('%firstname%',$splitname[0],$showpage);
 		$showpage=str_replace('%lastname%',$splitname[1],$showpage);
 	};
@@ -186,8 +186,8 @@ if ( isset($_GET['auto']) && ( $_GET['auto'] === 'yes' ) ) {	// &auto=yes at the
 };
 
 foreach ( $mergecode as $k => $v ) {	// loop through all the merge codes and switch things out
-	if ( isset($_GET[$k]) ) {
-		$showpage=str_replace($v,htmlspecialchars($_GET[$k]),$showpage);	// use "htmlspecialchars()" to add a layer of security to your site. down with evildoers
+	if ( isset($_REQUEST[$k]) ) {
+		$showpage=str_replace($v,htmlspecialchars($_REQUEST[$k]),$showpage);	// use "htmlspecialchars()" to add a layer of security to your site. down with evildoers
 	};
 };
 
