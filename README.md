@@ -17,4 +17,4 @@ The downside of this method is that the URL parameters
 must match the way [1ShoppingCart](http://www.1shoppingcart.com/)
 sends the request.
 
-ie: .../master.php?Email1=user@example.com&Name=John Doe&Zip=12345
+ie: `.../master.php?Email1=user@example.com&Name=John Doe&Zip=12345`
